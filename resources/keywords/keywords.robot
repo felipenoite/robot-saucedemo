@@ -43,6 +43,7 @@ Realizar Login Com Sucesso
 Fazer Logout
     [Documentation]    Realiza logout via menu lateral
     Click Element       ${BTN_MENU}
+    Sleep               3s
     Wait Until Element Is Visible    ${LINK_LOGOUT}    ${TIMEOUT}
     Click Element       ${LINK_LOGOUT}
     Wait Until Element Is Visible    ${BTN_LOGIN}    ${TIMEOUT}
@@ -63,6 +64,7 @@ Ir Para O Carrinho
     [Documentation]    Navega para a página do carrinho
     Click Element       ${CART_LINK}
     Wait Until Element Is Visible    ${BTN_CHECKOUT}    ${TIMEOUT}
+    Scroll Element Into View         ${BTN_CHECKOUT}
 
 # ─── CHECKOUT ───────────────────────────────────────────────────────
 
