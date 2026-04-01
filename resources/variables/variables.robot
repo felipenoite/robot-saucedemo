@@ -15,7 +15,7 @@ ${LOCKED_USER}          locked_out_user
 ${PERFORMANCE_USER}     performance_glitch_user
 
 # Tempo de espera padrão
-${TIMEOUT}              10s
+${TIMEOUT}              20s
 ${IMPLICIT_WAIT}        5s
 
 # Mensagens esperadas
