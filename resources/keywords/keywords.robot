@@ -56,7 +56,8 @@ Adicionar Produto Ao Carrinho
 Verificar Badge Do Carrinho
     [Documentation]    Verifica se o número no badge do carrinho está correto
     [Arguments]    ${quantidade_esperada}
-    Element Text Should Be    ${CART_BADGE}    ${quantidade_esperada}
+    Wait Until Element Is Visible    ${CART_BADGE}    ${TIMEOUT}
+    Element Text Should Be           ${CART_BADGE}    ${quantidade_esperada}
 
 Ir Para O Carrinho
     [Documentation]    Navega para a página do carrinho
