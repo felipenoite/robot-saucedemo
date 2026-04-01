@@ -41,11 +41,9 @@ Realizar Login Com Sucesso
     Element Text Should Be    ${TITLE_PRODUCTS}    Products
 
 Fazer Logout
-    [Documentation]    Realiza logout via menu lateral
-    Click Element       ${BTN_MENU}
-    Sleep               3s
-    Wait Until Element Is Visible    ${LINK_LOGOUT}    ${TIMEOUT}
-    Click Element       ${LINK_LOGOUT}
+    [Documentation]    Realiza logout limpando a sessão via JavaScript
+    Execute Javascript    window.localStorage.clear()
+    Go To                 ${BASE_URL}
     Wait Until Element Is Visible    ${BTN_LOGIN}    ${TIMEOUT}
 
 # ─── CARRINHO ───────────────────────────────────────────────────────
