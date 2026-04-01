@@ -1,0 +1,86 @@
+name: 🤖 Robot Framework Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Tags para filtrar testes (ex: smoke, regressao, negativo)'
+        required: false
+        default: ''
+
+jobs:
+  robot-tests:
+    name: Executar Testes Automatizados
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🌐 Instalar Google Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: 🚀 Smoke Tests
+        if: ${{ github.event.inputs.tags == '' }}
+        run: |
+          robot \
+            --outputdir reports/smoke \
+            --log log.html \
+            --report report.html \
+            --include smoke \
+            tests/
+
+      - name: 🔁 Regressão Completa
+        if: ${{ github.event.inputs.tags == '' }}
+        run: |
+          robot \
+            --outputdir reports/regressao \
+            --log log.html \
+            --report report.html \
+            --exclude smoke \
+            tests/
+
+      - name: 🏷️ Executar testes por tag
+        if: ${{ github.event.inputs.tags != '' }}
+        run: |
+          robot \
+            --outputdir reports \
+            --log log.html \
+            --report report.html \
+            --include ${{ github.event.inputs.tags }} \
+            tests/
+
+      - name: 📊 Publicar relatório HTML
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: robot-reports
+          path: reports/
+          retention-days: 30
+
+      - name: ✅ Verificar resultado dos testes
+        if: always()
+        run: |
+          if [ -f reports/smoke/output.xml ] || [ -f reports/output.xml ]; then
+            echo "✅ Relatório gerado com sucesso!"
+          else
+            echo "❌ Relatório não encontrado."
+            exit 1
+          fi
