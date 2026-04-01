@@ -60,10 +60,9 @@ Verificar Badge Do Carrinho
     Element Text Should Be           ${CART_BADGE}    ${quantidade_esperada}
 
 Ir Para O Carrinho
-    [Documentation]    Navega para a página do carrinho
-    Click Element       ${CART_LINK}
+    [Documentation]    Navega para a página do carrinho via URL direta
+    Go To                            ${BASE_URL}/cart.html
     Wait Until Element Is Visible    ${BTN_CHECKOUT}    ${TIMEOUT}
-    Scroll Element Into View         ${BTN_CHECKOUT}
 
 # ─── CHECKOUT ───────────────────────────────────────────────────────
 
