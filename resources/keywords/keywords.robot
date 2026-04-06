@@ -9,8 +9,7 @@ Resource            ../locators/locators.robot
 Abrir Navegador
     [Documentation]    Abre o navegador e acessa a página de login do SauceDemo
     Open Browser        ${BASE_URL}    chrome
-    ...    options=add_argument("--headless");add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage");add_argument("--disable-background-networking")
-    Maximize Browser Window
+    ...    options=add_argument("--headless");add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage");add_argument("--disable-gpu");add_argument("--window-size=1920,1080")
     Set Selenium Implicit Wait    ${IMPLICIT_WAIT}
 
 Fechar Navegador
