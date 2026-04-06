@@ -20,9 +20,10 @@ Fechar Navegador
 
 Limpar Sessao
     [Documentation]    Limpa o localStorage para destruir a sessão ativa
-    Execute Javascript              window.localStorage.clear()
-    Go To                           ${BASE_URL}
-    Wait Until Element Is Visible   ${BTN_LOGIN}    ${TIMEOUT}
+    Wait Until Element Is Visible    ${BTN_LOGIN}    ${TIMEOUT}
+    Execute Javascript               window.localStorage.clear()
+    Go To                            ${BASE_URL}
+    Wait Until Element Is Visible    ${BTN_LOGIN}    ${TIMEOUT}
 
 # ─── LOGIN ──────────────────────────────────────────────────────────
 
@@ -62,6 +63,7 @@ Ir Para O Carrinho
     [Documentation]    Navega para a página do carrinho via URL direta
     Go To                            ${BASE_URL}/cart.html
     Wait Until Element Is Visible    ${BTN_CHECKOUT}    ${TIMEOUT}
+    Wait Until Element Is Enabled    ${BTN_CHECKOUT}    ${TIMEOUT}
 
 # ─── CHECKOUT ───────────────────────────────────────────────────────
 
