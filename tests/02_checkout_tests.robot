@@ -35,7 +35,7 @@ CT010 - Fluxo completo de compra (happy path)
     [Tags]    checkout    smoke    e2e
     Adicionar Produto Ao Carrinho    ${BTN_ADD_BACKPACK}
     Ir Para O Carrinho
-    Click Button        ${BTN_CHECKOUT}    ${TIMEOUT}
+    Click Button        ${BTN_CHECKOUT}
     Wait Until Element Is Visible    ${INPUT_FIRST_NAME}    ${TIMEOUT}
     Preencher Dados De Entrega      Felipe    Noite    12345-678
     Wait Until Element Is Visible    ${BTN_FINISH}    ${TIMEOUT}
