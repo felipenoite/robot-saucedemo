@@ -64,6 +64,7 @@ Ir Para O Carrinho
     Go To                            ${BASE_URL}/cart.html
     Wait Until Element Is Visible    ${BTN_CHECKOUT}    ${TIMEOUT}
     Wait Until Element Is Enabled    ${BTN_CHECKOUT}    ${TIMEOUT}
+    Execute Javascript               document.getElementById('checkout').click()
 
 # ─── CHECKOUT ───────────────────────────────────────────────────────
 
