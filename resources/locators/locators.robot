@@ -17,7 +17,7 @@ ${SORT_DROPDOWN}        css=[data-test="product-sort-container"]
 
 # Cart Page
 ${CART_ITEMS}           css=.cart_item
-${BTN_CHECKOUT}         id=checkout
+${BTN_CHECKOUT}         css=.checkout_button
 ${BTN_CONTINUE_SHOPPING}  id=continue-shopping
 
 # Checkout Page - Step 1
